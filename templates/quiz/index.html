@@ -1,0 +1,23 @@
+{% extends "quiz/layout.html" %}
+
+{% block body %}
+    <h1>Quiz page</h1>
+    <div class="breakdown">
+    <form action "{% url 'quiz:index' %}" method="post">
+        {% csrf_token %}
+         
+        {% for q in questions %}
+        
+        <p>{{ q }}</p>
+        <br>
+        {{ form }}
+        <br>
+        <br>
+        <br>
+        {% endfor %}
+        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>           
+
+        </form>
+    </div>
+
+{% endblock %}

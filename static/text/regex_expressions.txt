@@ -1,0 +1,121 @@
+r'\w*ft\b'
+r'\w*ing\b'
+r'\w*cks\b'
+r'\w*lt\w*'
+r'\w*u\w*'
+r'\w*ce\b'
+r'([qwrtypsdfghjklzxcvbnm])(\1)'
+r'\w*th\b'
+r'\w*w\w*'
+n/a
+r'\w*ow\w*'
+r'\w*ular\b'
+r'\w*ck\b'
+r'\w*oo\w*'
+r'\w*au\w*'
+r'\w*t\w*'
+r'\w*er\w*'
+r'\bch\w*'
+n/a // what is an example of magic e with a
+r'\w*ou\w*'
+r'\w*st\b'
+n/a // what is sight word
+r'\w*rk\b'
+r'\w*([flsz])(\1)\b'
+r'\bcr\w*'
+r'\w*y\w*'
+n/a // sight word?
+r'\w*nch\b'
+r'\w*sk\b'
+n/a // what is the target?
+r'\w*ng\b'
+n/a // explanation required
+n/a // target?
+n/a // explanation required
+r'\bbr\w*'
+r'\w*o\w*' 
+r'\w*b\w*' 
+r'\w*x\w*'
+r'\w*ed\b'
+n/a // explanation?
+r'\w*tch\b'
+n/a // explanation?
+r'\btw\w*'
+n/a
+n/a
+r'\bth\w*'
+r'\bpr\w*'
+r'\w*le\b'
+r'\w*d\w*'
+n/a
+r'\bstr\w*'
+r'\w*s\w*'
+r'\w*v\w*'
+r'\w*ase\b'
+r'\w*lp\b'
+r'\bthr\w*'
+n/a
+r'\w*ay\w*'
+r'\w*nd\b'
+r'\w*io\w*'
+r'\w*m\w*'
+r'\bpl\w*'
+r'\w*mp\b'
+n/a
+r'\w*a\w*'
+n/a
+n/a // what?
+r'\btr\w*'
+r'\w*e\w*'
+r'\w*dge\b'
+r'\w*sh\b'
+r'\bst\w*'
+n/a
+r'\w*nk\b'
+r'\w*j\w*'
+r'\bdr\w*'
+r'\w*n\w*'
+r'\w*l\w*'
+n/a
+n/a
+r'\bshr\w*'
+n/a
+r'\w*f\w*'
+r'\bsc\w*'
+r'\bspr\w*'
+n/a
+n/a
+r'\bsn\w*'
+r'\bspl\w*'
+r'\w*r\w*'
+r'\w*c\w*'
+r'\w*h\w*'
+n/a
+r'\bspl\w*'
+r'\bsl\w*'
+r'\bfl\w*'
+r'\w*oy\w*'
+n/a
+r'\bsh\w*'
+r'\w*k\w*'
+n/a
+r'\w*ai\w*'
+r'\w*aw\w*'
+r'\bsp\w*'
+n/a
+n/a
+r'\bre\w*'
+r'\w*oi\w*'
+r'\w*i\w*'
+r'\w*nt\b'
+r'\bgr\w*'
+n/a
+n/a
+n/a
+n/a // maybe r'\w*rch\w*'
+r'\w*g\w*'
+r'\w*ei\w*'
+r'\w*p\w*'
+r'\w*es\b'
+n/a
+r'\w*ea\w*'

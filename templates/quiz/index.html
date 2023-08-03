@@ -1,9 +1,12 @@
 {% extends "quiz/layout.html" %}
 
 {% block body %}
+
+    {% if child and teacher %}
     <h1>Quiz page</h1>
 
-    <p> User: {{ user }} </p>
+    <p> User: {{ child }} </p>
+    <p> Class: {{ teacher }} </p>
 
     <div class="breakdown">
     <form action "{% url 'quiz:index' %}" method="post">
@@ -22,5 +25,23 @@
 
         </form>
     </div>
+
+    {% else %}
+
+    <h1>Login page</h1>
+    
+    <div class="breakdown">
+        <form action="{% url 'quiz:index' %}" method="post">
+        {% csrf_token %}
+        <h3> Please put in your name </h3> 
+        <p> {{ login_form }} </p>
+        <br>
+        <br>
+        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </a>
+    </div>
+
+{% endif %}
 
 {% endblock %}

@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django import forms
 import re
-from .models import Student, Test, Result, Classroom
+from .models import *
 from . import spellcheck
 from . import make_hashmap
 from . import makepage
+import datetime
 
 # Create your views here.
 
@@ -17,11 +18,16 @@ class loginForm(forms.Form):
 
 def make_txt(child, teacher, breakdown, correct, incorrect):
 
-    classroom = Classroom.objects.get(name=teacher)
+    student = Student(name=child)
+    student.save()
+    teacher = Classroom.objects.get(name=teacher)
+
+    teacher.students.add(student)
     
     breakdown_str = '\n'.join(breakdown.values())
-    classroom.text = f'Child: {child}\nTeacher: {teacher}\nCorrect: {correct}\nIncorrect: {incorrect}\nBreakdown: {breakdown_str}'
-    classroom.save()
+    student.result_sheet = f'Pupil Name: {child}\nDate: {datetime.date.today()}\nScore: {correct}/{incorrect}\nBreakdown: {breakdown_str}'
+    student.save()
+    teacher.save()
 
 def prep_qna(file):
 

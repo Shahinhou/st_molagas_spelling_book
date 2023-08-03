@@ -4,16 +4,14 @@
     <h1>Login page</h1>
     
     <div class="breakdown">
-        <form action="{% url 'quiz:login' %}" method="post">
+    <form method="post">
         {% csrf_token %}
         <h3> Please put in your name </h3> 
-        <p> {{ form }} </p>
+        {{ form.as_p }}
         <br>
         <br>
-        <a href="{% url 'quiz:index' %}">
-        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>           
         </form>
-        </a>
     </div>
 
 {% endblock %}

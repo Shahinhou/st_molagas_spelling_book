@@ -45,22 +45,22 @@ class Test(models.Model):
     unique_crits = models.TextField(default=write_text(str(f2)))
     regs = models.TextField(default=write_text(str(f3)))
 
-class Classroom(models.Model):
-
-    name = models.CharField(max_length=100, default="Ms. de Faoite")
-    text = models.TextField(max_length=500000, default="hello world")
-    # foreign key list?
-    students = []
-
 class Student(models.Model):
 
     name = models.CharField(max_length=100,default="john")
-    password = models.CharField(max_length=100, default='1234')
-    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name="student")
-    result_sheet = models.TextField(max_length=500000, default="none")
+    #classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name="student")
+    result_sheet = RichTextField(max_length=500000, default="none")
 
-class Result(models.Model):
+    def __str__(self):
+        return self.name
 
-    test = models.ForeignKey(Test, on_delete=models.CASCADE,related_name="result")
-    student = models.ForeignKey(Student, on_delete=models.CASCADE,related_name="result")
-    result_sheet = models.TextField(max_length=500000, default="none")
+class Classroom(models.Model):
+
+    name = models.CharField(max_length=100, default="Ms. de Faoite")
+    #text = models.TextField(max_length=500000, default="hello world")
+    # foreign key list?
+    students = models.ManyToManyField(Student)
+
+    def __str__(self):
+        return self.name
+

@@ -48,6 +48,12 @@ class Test(models.Model):
 class Student(models.Model):
 
     name = models.CharField(max_length=100,default="john")
+    correct = models.IntegerField(default=0)
+    incorrect = models.IntegerField(default=0)
+    breakdown = models.TextField(max_length=500000,default="none")
+    crit_counter = models.TextField(max_length=500000,default="none")
+    
+
     #classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name="student")
     result_sheet = RichTextField(max_length=500000, default="none")
 

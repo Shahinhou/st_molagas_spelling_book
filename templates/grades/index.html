@@ -1,0 +1,18 @@
+{% extends "grades/layout.html" %}
+
+{% block body %}
+
+<h1> {{ teacher }} </h1>
+<br>
+<br>
+{% for student in students %}
+
+<a href="{% url 'results' student.id %}">
+<h3> {{ student.name }} </h3>
+<p> {{ student.crit_counter }} </p>
+<br>
+<br>
+</a>
+{% endfor %}
+{% endblock %}
+

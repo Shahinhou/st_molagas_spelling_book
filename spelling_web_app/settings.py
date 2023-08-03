@@ -33,6 +33,7 @@ CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
 
 INSTALLED_APPS = [
     'quiz',
+    'grades',
     'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',

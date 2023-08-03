@@ -17,15 +17,16 @@ class loginForm(forms.Form):
     teacher = forms.CharField(label="Your Class")
 
 def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
-
-    student = Student(name=child)
+    breakdown_str = '\n'.join(breakdown.values())
+    critcount_str = [f'Error:  \t  No. of instances:\n{"-"*50}\n']+[f'{k}:  \t  {v}' for k,v in crit_counter.items()]
+    critcount_str = '\n'.join(critcount_str)
+    
+    student = Student(name=child, breakdown=breakdown_str, crit_counter=critcount_str,correct=correct,incorrect=incorrect)
     student.save()
     teacher = Classroom.objects.get(name=teacher)
 
     teacher.students.add(student)
 
-    critcount_str = [f'Error:  \t  No. of instances:\n{"-"*50}\n']+[f'{k}:  \t  {v}' for k,v in crit_counter.items()]
-    critcount_str = '\n'.join(critcount_str)
 
     breakdown_str = '\n'.join(breakdown.values())
     student.result_sheet = f'Pupil Name: {child}\n\nDate: {datetime.date.today()}\n\nScore: {correct}/{incorrect}\n\nAnalysis:\n\n{critcount_str}\n\nBreakdown:\n\n{breakdown_str}'

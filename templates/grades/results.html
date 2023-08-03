@@ -1,0 +1,22 @@
+{% extends "quiz/layout.html" %}
+
+{% block body %}
+
+<div class="overall">
+<h1> Overall: </h1>
+<h2> CORRECT: {{ student.correct }} </h2>
+<h2> INCORRECT: {{ student.incorrect }} </h2>
+</div>
+<br>
+<h1> Detailed Breakdown: </h1>
+<br>
+
+
+<div class="breakdown">
+{% for s in analysis %}
+
+<h3>{{ s }}</h3>
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -11,8 +11,17 @@ from . import makepage
 class answerForm(forms.Form):
     answer = forms.CharField(label="Your Answer")
 
-class userForm(forms.Form):
-    user = forms.CharField(label="Your Name")
+class loginForm(forms.Form):
+    child = forms.CharField(label="Your Name")
+    teacher = forms.CharField(label="Your Class")
+
+def make_txt(child, teacher, breakdown, correct, incorrect):
+
+    classroom = Classroom.objects.get(name=teacher)
+    
+    breakdown_str = '\n'.join(breakdown.values())
+    classroom.text = f'Child: {child}\nTeacher: {teacher}\nCorrect: {correct}\nIncorrect: {incorrect}\nBreakdown: {breakdown_str}'
+    classroom.save()
 
 def prep_qna(file):
 
@@ -51,25 +60,9 @@ def correctify(user_answers, server_answers):
 
     return errors, correct, incorrect, answer_dict
 
-def login(request):
 
-    if request.method=='POST':
-        form = userForm(request.POST)
 
-        if form.is_valid():
-            username = request.POST.get('user')
-
-            return index(request,username)
-        else:
-            return render(request, 'quiz/login.html', {
-                'user_form': userForm()
-                })
-
-    return render(request, 'quiz/login.html', {
-        'user_form': userForm()
-        })
-
-def index(request, user=None):
+def index(request):
     
     questions, server_answers, total = prep_qna('static/text/sample.txt')
     
@@ -80,11 +73,34 @@ def index(request, user=None):
     errors = []
 
     if request.method == 'POST':
-        # if the request to the server is in the form of a user RETURNING data
 
+        form = loginForm(request.POST)
+
+        if form.is_valid():
+            
+            child = request.POST.get('child')
+            teacher = request.POST.get('teacher')
+
+            request.session['child'] = child
+            request.session['teacher'] = teacher
+            
+        elif 'child' in request.session and 'teacher' in request.session:
+            pass
+
+        else:
+            return render(request, 'quiz/index.html', {
+                'form': answerForm(),
+                'questions': questions,
+                'login_form': loginForm()
+                })
+
+        
+        # if the request to the server is in the form of a user RETURNING data
+        print('\n','posting','\n')
         form = answerForm(request.POST)
          
         if form.is_valid():
+            
             user_answers = request.POST.getlist('answer')
             
             errors, correct, incorrect, answer_dict = correctify(user_answers, server_answers)
@@ -103,6 +119,12 @@ def index(request, user=None):
                 breakdown[k] = f"Child's Answer: {answer_dict[k][0]}, Expected: {answer_dict[k][1]},\n Missing Criteria: {', '.join(v)}"
             
             print(breakdown)
+
+            child = request.session['child']
+            teacher = request.session['teacher']
+
+            txt = make_txt(child, teacher, breakdown, correct, incorrect)
+
             return render(request, 'quiz/results.html', {
                 'correct' : correct,
                 'incorrect' : incorrect,
@@ -111,14 +133,16 @@ def index(request, user=None):
         else:
             return render(request, 'quiz/index.html', {
                 'form': answerForm(),
-                'user': user,
+                'login_form': loginForm(),
+                'child': child,
+                'teacher': teacher,
                 'questions': questions
                 })
     else:
         # this means they are just opening the site on index.
 
         return render(request, 'quiz/index.html', {
-            'user': user,
+            'login_form': loginForm(),
             'form': answerForm(),
             'questions': questions
             })

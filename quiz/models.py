@@ -48,6 +48,7 @@ class Test(models.Model):
 class Classroom(models.Model):
 
     name = models.CharField(max_length=100, default="Ms. de Faoite")
+    text = models.TextField(max_length=500000, default="hello world")
     # foreign key list?
     students = []
 
@@ -56,6 +57,7 @@ class Student(models.Model):
     name = models.CharField(max_length=100,default="john")
     password = models.CharField(max_length=100, default='1234')
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name="student")
+    result_sheet = models.TextField(max_length=500000, default="none")
 
 class Result(models.Model):
 

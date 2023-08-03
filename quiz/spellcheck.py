@@ -71,6 +71,7 @@ def classify_errors(errors, eng_file, unique_crit_file, reg_file):
     crit_to_reg = make_hashmap.make_eng_to_regex(unique_crit_file, reg_file)
     
     error_dict = {}
+    crit_counter = {}
     #print(eng_to_crit)
     #print(crit_to_reg)
     for actual,expected,n in errors:
@@ -94,8 +95,13 @@ def classify_errors(errors, eng_file, unique_crit_file, reg_file):
             #print(matches)
             if len(matches) == 0:
                 error_dict[n].append(crit)
+
+                if crit not in crit_counter:
+                    crit_counter[crit] = 0
+                
+                crit_counter[crit] += 1
     
-    return error_dict
+    return error_dict, crit_counter
 
 
 

@@ -16,16 +16,19 @@ class loginForm(forms.Form):
     child = forms.CharField(label="Your Name")
     teacher = forms.CharField(label="Your Class")
 
-def make_txt(child, teacher, breakdown, correct, incorrect):
+def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
 
     student = Student(name=child)
     student.save()
     teacher = Classroom.objects.get(name=teacher)
 
     teacher.students.add(student)
-    
+
+    critcount_str = [f'Error:  \t  No. of instances:\n{"-"*50}\n']+[f'{k}:  \t  {v}' for k,v in crit_counter.items()]
+    critcount_str = '\n'.join(critcount_str)
+
     breakdown_str = '\n'.join(breakdown.values())
-    student.result_sheet = f'Pupil Name: {child}\nDate: {datetime.date.today()}\nScore: {correct}/{incorrect}\nBreakdown: {breakdown_str}'
+    student.result_sheet = f'Pupil Name: {child}\n\nDate: {datetime.date.today()}\n\nScore: {correct}/{incorrect}\n\nAnalysis:\n\n{critcount_str}\n\nBreakdown:\n\n{breakdown_str}'
     student.save()
     teacher.save()
 
@@ -114,7 +117,7 @@ def index(request):
             # we have gotten our correct/incorrect, completed answer_dict.
             # we need to compose criteria/error_dict now.
 
-            error_dict = spellcheck.classify_errors(errors, 
+            error_dict, crit_counter = spellcheck.classify_errors(errors, 
                     'static/text/no_bracket_criteria.txt', 
                     'static/text/unique_criteria_list.txt', 
                     'static/text/regex_expressions.txt')
@@ -129,7 +132,7 @@ def index(request):
             child = request.session['child']
             teacher = request.session['teacher']
 
-            txt = make_txt(child, teacher, breakdown, correct, incorrect)
+            txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect)
 
             return render(request, 'quiz/results.html', {
                 'correct' : correct,

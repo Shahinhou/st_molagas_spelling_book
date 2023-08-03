@@ -75,6 +75,7 @@ def correctify(user_answers, server_answers):
 def index(request):
     
     questions, server_answers, total = prep_qna('static/text/sample.txt')
+    teacher_names = [c.name for c in Classroom.objects.all()]
     
     correct = 0
     incorrect = 0
@@ -90,6 +91,14 @@ def index(request):
             
             child = request.POST.get('child')
             teacher = request.POST.get('teacher')
+            
+            if teacher not in teacher_names:
+                return render(request, 'quiz/index.html', {
+                    'form': answerForm(),
+                    'questions': questions,
+                    'login_form': loginForm()
+                    })
+
 
             request.session['child'] = child
             request.session['teacher'] = teacher

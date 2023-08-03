@@ -2,17 +2,36 @@
 
 {% block body %}
 
+{% if teacher and students %}
 <h1> {{ teacher }} </h1>
 <br>
 <br>
 {% for student in students %}
 
-<a href="{% url 'results' student.id %}">
+<a href="{% url 'grades:results' student.id %}">
 <h3> {{ student.name }} </h3>
 <p> {{ student.crit_counter }} </p>
 <br>
 <br>
 </a>
 {% endfor %}
-{% endblock %}
 
+{% else %}
+
+    <h1>Classroom Name</h1>
+    
+    <div class="breakdown">
+        <form action="{% url 'grades:index' %}" method="post">
+        {% csrf_token %}
+        <h3> Please enter the classroom name </h3> 
+        <p> {{ form }} </p>
+        <br>
+        <br>
+        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </a>
+    </div>
+
+{% endif %}
+
+{% endblock %}

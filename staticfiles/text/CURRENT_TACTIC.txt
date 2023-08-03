@@ -1,0 +1,15 @@
+Notes
+
+Map every 'word' to a list of 'criteria'. 'criteria' is in plain english.
+
+Map every 'criteria' to a UNIQUE regex expression. This will have to be manual. 
+
+In main program, for every FAILED word (or otherwise? is there any need to check successful words? perhaps JUST list the criteria?), perform:
+
+1. criteria_map[word] -> get list of criteria.
+
+2. for each criteria in criteria_map[word], perform regex_map[criteria].
+
+3. using returned regex expression, use re.findall(pattern, word).
+
+4. if empty, return criteria FAILED. perhaps a tuple? (criteria_plain_english, success_status).

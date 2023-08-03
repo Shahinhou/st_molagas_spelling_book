@@ -1,0 +1,105 @@
+body {
+
+    background-color: #e6f3fa;
+}
+
+.header {
+
+    background-color: #27a9f5;
+    box-shadow: 5px 10px gray;
+}
+
+h1 {
+
+    color: white;
+    padding: 30px;
+    font-size: 70px;
+    font-family: "Intro Demo", sans-serif;
+    background-color: black;
+}
+
+h2 {
+
+    padding: 30px;
+    font-family: 'Roboto';
+    font-size: 60px;
+    font-style: italic;
+    text-shadow: 2px 2px 2px gray;
+    color: white;
+    background-color: #73c8fa;
+}
+h3 {
+
+    color: white;
+    text-shadow: 2px, 2px, 2px, gray;
+    padding: 30px;
+    box-shadow: 5px, 10px, black;
+    font-size: 40px;
+    background-color: #98d6fa;
+    font-family: 'Merriweather';
+}
+
+p {
+    padding: 20px;
+    font-size: 25px;
+    font-family: 'Roboto';
+}
+label {
+    padding: 20px;
+    font-size: 25px;
+    font-family: 'Roboto';
+}
+
+
+.credit {
+    font-size: 35px;
+    margin-left: 60%;
+    font-weight: lighter;
+    font-style: italic;
+    color: white;
+    text-shadow: 2px 2px 2px gray;
+    font-family: 'Indie Flower';
+}
+
+.topbar {
+    font-size: 80px;
+    font-style: italic;
+    margin right: 55%;
+}
+
+.overall{
+    margin: auto;
+    width: 50%;
+    box-shadow: 5px, 15px, gray;
+    background-color: #98d6fa;
+    padding: 20px;
+}
+
+.breakdown {
+    margin: auto;
+    width: 65%;
+    box-shadow: 5px, 10px, black;
+    padding: 20px;
+    background-color: #aee0fc;
+}
+#submit-button {
+  background-color: black;
+  border-radius: 12px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
+
+input[type=text] {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+
+

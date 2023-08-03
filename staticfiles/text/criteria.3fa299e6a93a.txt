@@ -1,0 +1,100 @@
+[cab], consonant c, short vowel a, consonant b
+[fib], consonant f, short vowel i, consonant b
+[gosh], consonant g, short vowel o, final blend sh
+[rump], consonant r, short vowel u, final blend mp
+[ditch], consonant d, short vowel i, final blend tch
+[splash], triple initial blend spl, short vowel a, final blend sh
+[boss], consonant b, short vowel o, ff/ll/ss/zz ending
+[start], initial blend st, r-controlled vowel ar, consonant t
+[fox], consonant f, short vowel o, consonant x
+[belted], consonant b, short vowel e, final blend lt, suffix ed
+[snake], initial blend sn, magic e with a
+[south], consonant s, double vowel ou, final blend th
+[strong], triple initial blend str, short vowel o, final blend ng
+[joint], consonant j, double vowel oi, final blend nt
+[cycle], soft sound of c, vowel sound of y, le ending cle
+[scold], initial blend sc, welded ending old
+[wagging], consonant w, short vowel a, consonant g, double middle consonant, suffix ing
+[audio], double vowel au, consonant d, double vowel io
+[stray], triple initial blend str, double vowel ay
+[vein], consonant v, double vowel ei, consonant n
+[hem], consonant h, short vowel e, consonant m
+[yam], consonant y, short vowel a, consonant m
+[gift], consonant g, short vowel i, final blend ft
+[junk], consonant j, short vowel u, final blend nk
+[scrap], triple initial blend scr, short vowel a, consonant p
+[squint], qu/squ error, short vowel i, final blend nt
+[yell], consonant y, short vowel e, ff/ll/ss/zz ending
+[march], consonant m, r-controlled vowel ar, final blend ch after r
+[socks], consonant s, short vowel o, cks ending
+[drenched], initial blend dr, short vowel e, final blend nch, suffix ed
+[slime], initial blend sl, magic e with i
+[growl], initial blend gr, double vowel ow, consonant l
+[shrunk], triple initial blend shr, short vowel u, final blend nk
+[employ], short vowel e, consonant m, initial blend pl, double vowel oy
+[pyramid], consonant p, vowel sound of y, consonant r, short vowel a, consonant m, short vowel i, consonant d
+[almost], welded sound al/all, consonant m, welded ending ost
+[snipped], initial blend sn, short vowel i, consonant p, double middle consonant, suffix ed
+[sauce], consonant s, double vowel au, ce ending
+[sprayed], triple initial blend spr, double vowel ay, suffix ed
+[collar], consonant c, short vowel o, double middle consonant, /er/ sound written ar
+[nip], consonant n, short vowel i, consonant p
+[bud], consonant b, short vowel u, consonant d
+[jest], consonant j, short vowel e, final blend st
+[yelp], consonant y, short vowel e, final blend lp
+[church], initial blend ch, r-controlled vowel ur, final blend ch after r
+[strap], triple initial blend str, short vowel a, consonant p
+[puff], consonant p, short vowel u, ff/ll/ss/zz ending
+[form], consonant f, r-controlled vowel or, consonant m
+[flicks], initial blend fl, short vowel i, cks ending
+[thatched], initial blend th, short vowel a, final blend tch, suffix ed
+[tube], consonant t, magic e with u
+[ledge], consonant l, short vowel e, dge ending
+[anywhere], compound word, sight word "any", sight word "where"
+[stood], initial blend st, double vowel oo, consonant d
+[reply], prefix re, initial blend pl, vowel sound of y
+[rind], consonant r, welded ending ind
+[rifle], consonant r, long vowel with single consonant, le ending fle
+[prawn], initial blend pr, double vowel aw, consonant n
+[beware], sight word "be", consonant w, magic e with a
+[editor], short vowel e, consonant d, short vowel i, consonant t, /er/ sound written or
+[pod], consonant p, short vowel o, consonant d
+[jig], consonant j, short vowel i, consonant g
+[rusk], consonant r, short vowel u, final blend sk
+[crab], initial blend cr, short vowel a, consonant b
+[Grinch], initial blend gr, short vowel i, final blend nch
+[throng], initial blend thr, short vowel o, final blend ng
+[buzz], consonant b, short vowel u, ff/ll/ss/zz ending
+[porch], consonant p, r-controlled vowel or, final blend ch after r
+[wand], consonant w, w making "a" say /o/, final blend nd
+[marked], consonant m, r-controlled vowel ar, final blend rk, suffix ed
+[shiny], initial blend sh, magic e with i, drop the e for y
+[crutches], initial blend cr, short vowel u, final blend tch, suffix es
+[baseball], compound word, consonant b, magic e with a, consonant b, welded sound al/all
+[proof], initial blend pr, double vowel oo, consonant f
+[dries], initial blend dr, y changes to ies
+[fined], consonant f, magic e with i, consonant d
+[ladle], consonant l, long vowel with single consonant, le ending dle
+[scrawl], triple initial blend scr, double vowel aw, consonant l
+[decade], consonant d, short vowel e, consonant c, magic e with a, consonant d
+[purchase], consonant p, r-controlled vowel ur, initial blend ch, ase ending
+[gum], consonant g, short vowel u, consonant m
+[vet], consonant v, short vowel e, consonant t
+[dock], consonant d, short vowel o, final blend ck
+[spilt], initial blend sp, short vowel i, final blend lt
+[twist], initial blend tw, short vowel i, final blend st
+[shrub], triple initial blend shr, short vowel u, consonant b
+[dark], consonant d, r-controlled vowel ar, consonant k
+[scorch], initial blend sc, r-controlled vowel or, final blend ch after r
+[worm], consonant w, w making "or" say /er/, consonant m
+[sprinted], triple initial blend spr, short vowel i, final blend nt, suffix ed
+[using], magic e with u, drop e for ing
+[brushes], initial blend br, short vowel u, final blend sh, suffix es
+[everything], compound word, sight word every, initial blend th, short vowel i, final blend ng
+[breath], initial blend br, double vowel ea, final blend th
+[tried], initial blend tr, y changes to ied.
+[mild], consonant m, welded ending ild
+[wobble], consonant w, short vowel o, double middle consonant, le ending
+[waist], consonant w, double vowel ai, final blend st
+[weight] consonant w, double vowel ei, silent gh, consonant t
+[circular], soft sound of c, r-controlled vowel ir, consonant c, ular ending

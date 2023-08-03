@@ -1,0 +1,6 @@
+Other criteria: 
+If in any instance a b is written instead of a d (or vice versa), report this as "b/d reversal"
+If in any instance an b is written instead of a p (or vice versa), report this as "b/p confusion"
+If in any instance an f is written instead of a v (or vice versa), report this as "f/v confusion"
+If in any instance a g is written instead of a j (or vice versa), report this as "j/g confusion"
+If in any instance a c is written instead of a k (or vice versa), report this as "c/k error"

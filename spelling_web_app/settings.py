@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#1^bh8qieanp8_)dk9ns!2gt-!cltgwznf_50szd9&!cmujj(#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+DEVELOPMENT_MODE= True
 ALLOWED_HOSTS = ['web-production-3640.up.railway.app', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -117,9 +118,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static/'),
         )
@@ -130,7 +134,5 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Update database configuration from $DATABASE_URL.
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
 LOGIN_REDIRECT_URL = "/quiz/"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

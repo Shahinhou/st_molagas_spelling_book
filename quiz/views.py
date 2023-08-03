@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django import forms
 import re
+from .models import Student, Test, Result, Classroom
 from . import spellcheck
 from . import make_hashmap
 from . import makepage
@@ -9,6 +10,9 @@ from . import makepage
 
 class answerForm(forms.Form):
     answer = forms.CharField(label="Your Answer")
+
+class userForm(forms.Form):
+    user = forms.CharField(label="Your Name")
 
 def prep_qna(file):
 
@@ -47,8 +51,26 @@ def correctify(user_answers, server_answers):
 
     return errors, correct, incorrect, answer_dict
 
-def index(request):
+def login(request):
 
+    if request.method=='POST':
+        form = userForm(request.POST)
+
+        if form.is_valid():
+            username = request.POST.get('user')
+
+            return index(request,username)
+        else:
+            return render(request, 'quiz/login.html', {
+                'user_form': userForm()
+                })
+
+    return render(request, 'quiz/login.html', {
+        'user_form': userForm()
+        })
+
+def index(request, user=None):
+    
     questions, server_answers, total = prep_qna('static/text/sample.txt')
     
     correct = 0
@@ -59,7 +81,9 @@ def index(request):
 
     if request.method == 'POST':
         # if the request to the server is in the form of a user RETURNING data
+
         form = answerForm(request.POST)
+         
         if form.is_valid():
             user_answers = request.POST.getlist('answer')
             
@@ -86,12 +110,15 @@ def index(request):
                 })
         else:
             return render(request, 'quiz/index.html', {
-                'form': form
+                'form': answerForm(),
+                'user': user,
+                'questions': questions
                 })
     else:
         # this means they are just opening the site on index.
 
         return render(request, 'quiz/index.html', {
+            'user': user,
             'form': answerForm(),
             'questions': questions
             })

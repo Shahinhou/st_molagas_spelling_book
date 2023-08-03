@@ -2,6 +2,9 @@
 
 {% block body %}
     <h1>Quiz page</h1>
+
+    <p> User: {{ user }} </p>
+
     <div class="breakdown">
     <form action "{% url 'quiz:index' %}" method="post">
         {% csrf_token %}

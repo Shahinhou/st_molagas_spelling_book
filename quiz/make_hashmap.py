@@ -25,15 +25,26 @@ def make_eng_to_regex(f1, f2):
 
     # f1 = file of unique english criteria, ready-made.
     # f2 = file of regex per line matching english criteria, must be manual?
+
+    # make compatible with sql text file.
+
     eng_to_reg = {}
 
-    with open(f1) as f:
-        eng = [c.strip() for c in f.readlines()]
-    #print(eng)
+    if f1[-4:] == '.txt':
+
+        with open(f1) as f:
+            eng = [c.strip() for c in f.readlines()]
+
+    else:
+        eng = [c.strip() for c in f2.split('\n')]
     
-    with open(f2) as f:
-        reg = [c.strip() for c in f.readlines()]
-    #print(reg)
+    if f2[-4:] == '.txt':
+
+        with open(f2) as f:
+            reg = [c.strip() for c in f.readlines()]
+
+    else:
+        reg = [c.strip() for c in f2.split('\n')]
 
     for i,c in enumerate(eng):
         if reg[i][0] == 'r':

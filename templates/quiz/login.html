@@ -1,0 +1,18 @@
+{% extends "quiz/layout.html" %}
+
+{% block body %}
+    <h1>Login page</h1>
+    
+    <div class="breakdown">
+    <form action "{% url 'quiz:login' %}" method="post">
+        {% csrf_token %}
+        <h3> Please put in your name </h3> 
+        <p>{{ user_form }}</p>
+        <br>
+        <br>
+        <a href= "quiz/index.html"><button id="submit-button" type="submit" class="btn btn-primary">Submit</button>           
+        </a>
+        </form>
+    </div>
+
+{% endblock %}

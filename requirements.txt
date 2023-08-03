@@ -5,6 +5,5 @@ django-js-asset==2.1.0
 django-richtextfield==1.6.1
 gunicorn==21.2.0
 httplib2==0.20.2
-pandas==1.5.3
 requests==2.28.2
 rich==12.6.0

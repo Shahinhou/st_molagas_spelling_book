@@ -16,6 +16,10 @@ class loginForm(forms.Form):
     child = forms.CharField(label="Your Name")
     teacher = forms.CharField(label="Your Class")
 
+class testForm(forms.Form):
+    options = [(obj.id, obj) for i,obj in enumerate(Test.objects.all())]
+    test = forms.ChoiceField(choices=options)
+
 def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
     breakdown_str = '\n'.join(breakdown.values())
     critcount_str = [f'Error:  \t  No. of instances:\n{"-"*50}\n']+[f'{k}:  \t  {v}' for k,v in crit_counter.items()]
@@ -33,12 +37,11 @@ def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
     student.save()
     teacher.save()
 
-def prep_qna(file):
+def prep_qna(test):
 
     server_answers = []
     
-    with open(file) as f:
-        questions = [s.strip() for s in f.readlines()]
+    questions = [s.strip() for s in test.questions.split('\n')]
 
     # prepare correct answers and list of questions
     p = r'\[[\S]*\]'
@@ -73,8 +76,10 @@ def correctify(user_answers, server_answers):
 
 
 def index(request):
+
+
     
-    questions, server_answers, total = prep_qna('static/text/sample.txt')
+    # questions, server_answers, total = prep_qna(test)
     teacher_names = [c.name for c in Classroom.objects.all()]
     
     correct = 0
@@ -86,22 +91,27 @@ def index(request):
     if request.method == 'POST':
 
         form = loginForm(request.POST)
+        test_form = testForm(request.POST)
+        print(test_form)
 
-        if form.is_valid():
+        if form.is_valid() and test_form.is_valid():
             
             child = request.POST.get('child')
             teacher = request.POST.get('teacher')
+            test = request.POST.get('test')
             
             if teacher not in teacher_names:
                 return render(request, 'quiz/index.html', {
                     'form': answerForm(),
-                    'questions': questions,
+                    'test_form': testForm(),
                     'login_form': loginForm()
                     })
 
 
             request.session['child'] = child
             request.session['teacher'] = teacher
+            request.session['test'] = Test.objects.get(pk=test).name
+            print('\nLOOK HERE',test)
             
         elif 'child' in request.session and 'teacher' in request.session:
             pass
@@ -109,8 +119,8 @@ def index(request):
         else:
             return render(request, 'quiz/index.html', {
                 'form': answerForm(),
-                'questions': questions,
-                'login_form': loginForm()
+                'login_form': loginForm(),
+                'test_form': testForm()
                 })
 
         
@@ -120,6 +130,10 @@ def index(request):
          
         if form.is_valid():
             
+            test = Test.objects.get(name=request.session['test'])
+
+            questions, server_answers, total = prep_qna(test)
+            
             user_answers = request.POST.getlist('answer')
             
             errors, correct, incorrect, answer_dict = correctify(user_answers, server_answers)
@@ -127,10 +141,7 @@ def index(request):
             # we have gotten our correct/incorrect, completed answer_dict.
             # we need to compose criteria/error_dict now.
 
-            error_dict, crit_counter = spellcheck.classify_errors(errors, 
-                    'static/text/no_bracket_criteria.txt', 
-                    'static/text/unique_criteria_list.txt', 
-                    'static/text/regex_expressions.txt')
+            error_dict, crit_counter = spellcheck.classify_errors(errors, test) 
             
             breakdown = {}
             for k,v in error_dict.items():
@@ -150,11 +161,15 @@ def index(request):
                 'breakdown':breakdown,
                 })
         else:
+            test = Test.objects.get(name=request.session['test'])           
+            questions, server_answers, total = prep_qna(test)
+
             return render(request, 'quiz/index.html', {
                 'form': answerForm(),
                 'login_form': loginForm(),
                 'child': child,
                 'teacher': teacher,
+                'test_form': testForm(),
                 'questions': questions
                 })
     else:
@@ -163,6 +178,6 @@ def index(request):
         return render(request, 'quiz/index.html', {
             'login_form': loginForm(),
             'form': answerForm(),
-            'questions': questions
+            'test_form': testForm(),
             })
 

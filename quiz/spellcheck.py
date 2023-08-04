@@ -65,10 +65,10 @@ def perform_test(f1, f2, answers=None):
     
     return errors, correct, incorrect, lines, answer_dict
 
-def classify_errors(errors, eng_file, unique_crit_file, reg_file):
-    eng_to_crit = make_hashmap.make_map(eng_file)
+def classify_errors(errors, test):
+    eng_to_crit = make_hashmap.make_map(test)
 
-    crit_to_reg = make_hashmap.make_eng_to_regex(unique_crit_file, reg_file)
+    crit_to_reg = make_hashmap.make_eng_to_regex(test)
     
     error_dict = {}
     crit_counter = {}

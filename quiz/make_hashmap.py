@@ -21,7 +21,7 @@ def make_set_of_criteria(d):
         print(c)
 
 
-def make_eng_to_regex(f1, f2):
+def make_eng_to_regex(test):
 
     # f1 = file of unique english criteria, ready-made.
     # f2 = file of regex per line matching english criteria, must be manual?
@@ -30,21 +30,9 @@ def make_eng_to_regex(f1, f2):
 
     eng_to_reg = {}
 
-    if f1[-4:] == '.txt':
-
-        with open(f1) as f:
-            eng = [c.strip() for c in f.readlines()]
-
-    else:
-        eng = [c.strip() for c in f2.split('\n')]
+    eng = [c.strip() for c in test.unique_crits.split('\n')]
     
-    if f2[-4:] == '.txt':
-
-        with open(f2) as f:
-            reg = [c.strip() for c in f.readlines()]
-
-    else:
-        reg = [c.strip() for c in f2.split('\n')]
+    reg = [c.strip() for c in test.regs.split('\n')]
 
     for i,c in enumerate(eng):
         if reg[i][0] == 'r':
@@ -59,12 +47,11 @@ def make_eng_to_regex(f1, f2):
     return eng_to_reg
 
 
-def make_map(file):
+def make_map(test):
 
     criteria_map = {}
 
-    with open(file) as f:
-        text = f.readlines()
+    text = [c.strip() for c in test.crit_list.split('\n')] 
     
     #print(text)
     for lines in text:

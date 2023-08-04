@@ -39,7 +39,8 @@ class Test(models.Model):
     f2 = 'static/text/unique_criteria_list.txt'
     f3 = 'static/text/regex_expressions.txt'
     f4 = 'static/text/testsheet.txt'
-
+    
+    name = models.CharField(max_length=100, default='unnamed')
     questions = models.TextField(default=write_text(str(f4)))
     crit_list = models.TextField(default=write_text(str(f1)))
     unique_crits = models.TextField(default=write_text(str(f2)))

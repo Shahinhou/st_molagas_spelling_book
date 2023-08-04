@@ -22,7 +22,7 @@ class testForm(forms.Form):
 
 def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
     breakdown_str = '\n'.join(breakdown.values())
-    critcount_str = [f'Error:  \t  No. of instances:\n{"-"*50}\n']+[f'{k}:  \t  {v}' for k,v in crit_counter.items()]
+    critcount_str = [f'Error:, No. of instances:']+[f'{k},{v}' for k,v in crit_counter.items()]
     critcount_str = '\n'.join(critcount_str)
     
     student = Student(name=child, breakdown=breakdown_str, crit_counter=critcount_str,correct=correct,incorrect=incorrect)

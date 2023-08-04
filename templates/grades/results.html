@@ -13,10 +13,20 @@
 
 
 <div class="breakdown">
+    <table>
+        <tr>
+            <th> Errors </th>
+            <th> Count </th>
+        </tr>
 {% for s in analysis %}
+<tr>
+{% for t in s %}
 
-<h3>{{ s }}</h3>
+<td> {{ t }} </td>
 
 {% endfor %}
+</tr>
+{% endfor %}
+    </table>
 </div>
 {% endblock %}

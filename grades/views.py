@@ -44,6 +44,14 @@ def results(request, student_id):
     child = Student.objects.get(pk=student_id)
     analysis = child.crit_counter.split('\n')
     
+    for i,s in enumerate(analysis):
+        a = s.split(',')
+        analysis[i] = a
+
+
+
+    print(analysis)
+    
 
     return render(request, 'grades/results.html', {
         'student': child,

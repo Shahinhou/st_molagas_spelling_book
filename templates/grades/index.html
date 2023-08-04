@@ -7,12 +7,12 @@
 <br>
 <br>
 {% for student in students %}
-
+<div class="breakdown">
 <a href="{% url 'grades:results' student.id %}">
 <h3> {{ student.name }} </h3>
-<p> {{ student.crit_counter }} </p>
 <br>
 <br>
+</div>
 </a>
 {% endfor %}
 

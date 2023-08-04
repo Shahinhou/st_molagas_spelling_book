@@ -1,2 +1,2 @@
-web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn locallibrary.wsgi
+web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn spelling_web_app.wsgi
 

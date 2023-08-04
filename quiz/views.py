@@ -41,7 +41,10 @@ def prep_qna(test):
 
     server_answers = []
     
-    questions = [s.strip() for s in test.questions.split('\n')]
+    with open(test.questions) as f:
+        questions = [s.strip() for s in f.readlines()]
+    
+    #questions = [s.strip() for s in test.questions.split('\n')]
 
     # prepare correct answers and list of questions
     p = r'\[[\S]*\]'

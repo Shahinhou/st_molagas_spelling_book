@@ -30,9 +30,15 @@ def make_eng_to_regex(test):
 
     eng_to_reg = {}
 
-    eng = [c.strip() for c in test.unique_crits.split('\n')]
+    with open(test.unique_crits) as f:
+        eng = [c.strip() for c in f.readlines()]
     
-    reg = [c.strip() for c in test.regs.split('\n')]
+    with open(test.regs) as f:
+        reg = [c.strip() for c in f.readlines()]
+    
+    #eng = [c.strip() for c in test.unique_crits.split('\n')]
+    
+    #reg = [c.strip() for c in test.regs.split('\n')]
 
     for i,c in enumerate(eng):
         if reg[i][0] == 'r':
@@ -51,7 +57,10 @@ def make_map(test):
 
     criteria_map = {}
 
-    text = [c.strip() for c in test.crit_list.split('\n')] 
+    with open(test.crit_list) as f:
+        text = [c.strip() for c in f.readlines()]
+
+    #text = [c.strip() for c in test.crit_list.split('\n')] 
     
     #print(text)
     for lines in text:

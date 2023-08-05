@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django import forms
 import re
 from .models import *
@@ -6,7 +6,8 @@ from . import spellcheck
 from . import make_hashmap
 from . import makepage
 import datetime
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 # Create your views here.
 
 class answerForm(forms.Form):
@@ -77,10 +78,13 @@ def correctify(user_answers, server_answers):
     return errors, correct, incorrect, answer_dict
 
 
-
+@login_required(login_url='/accounts/login/')
 def index(request):
 
+    print(request.user.username)
 
+    if request.user.username == 'teacher':
+        return redirect("grades:index") # redirect to your page
     
     # questions, server_answers, total = prep_qna(test)
     teacher_names = [c.name for c in Classroom.objects.all()]
@@ -157,6 +161,7 @@ def index(request):
             teacher = request.session['teacher']
 
             txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect)
+
 
             return render(request, 'quiz/results.html', {
                 'correct' : correct,

@@ -97,9 +97,9 @@ def classify_errors(errors, test):
                 error_dict[n].append(crit)
 
                 if crit not in crit_counter:
-                    crit_counter[crit] = 0
-                
-                crit_counter[crit] += 1
+                    crit_counter[crit] = []
+                # this used to be a counter i have changed it to a list and we will get len() for vals
+                crit_counter[crit].append(expected)
     
     return error_dict, crit_counter
 

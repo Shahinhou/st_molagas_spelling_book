@@ -47,6 +47,7 @@ class Test(models.Model):
     unique_crits = models.TextField(default=write_text(str(f2)))
     regs = models.TextField(default=write_text(str(f3)))
     steps = models.TextField(default='nothing')
+    other_crit = models.TextField(default='nothing')
 
     def __str__(self):
         return self.name

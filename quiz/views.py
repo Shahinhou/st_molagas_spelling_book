@@ -21,11 +21,13 @@ class testForm(forms.Form):
     options = [(obj.id, obj) for i,obj in enumerate(Test.objects.all())]
     test = forms.ChoiceField(choices=options)
 
-def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict):
+def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict, other_crit):
     breakdown_str = '\n'.join(breakdown.values())
     # k is criteria
-    critcount_str = [f'Error: No. of instances:']+[f'{step_dict[k]} {k},{v}' for k,v in crit_counter.items()]
-    critcount_str = '\n'.join(critcount_str)
+    critcount_str = [f'Error: No. of instances:']+[f'{step_dict[k]},{k},{len(v)},{v}' for k,v in crit_counter.items()]
+    other_str = [f'Global Criteria: No. of instances:']+[f'{k},{v}' for k,v in other_crit.items()]
+
+    critcount_str = '\n'.join(critcount_str) + '\n' + '\n'.join(other_str)
     
     student = Student(name=child, breakdown=breakdown_str, crit_counter=critcount_str,correct=correct,incorrect=incorrect)
     student.save()
@@ -85,6 +87,46 @@ def correctify(user_answers, server_answers):
         answer_dict[i] = tuple((actual, expected))
 
     return errors, correct, incorrect, answer_dict
+
+def update_dict(x, d):
+
+    if x not in d:
+        d[x] = 0
+
+    d[x] += 1
+    return d
+
+def other_crit_check(test, server_answers, user_answers):
+
+    other_crit_breakdown = {}
+
+    with open(test.other_crit) as f:
+        criteria = [s.strip().split(',') for s in f.readlines()]
+
+    for i, answers in enumerate(server_answers):
+
+        for j, letters in enumerate(answers):
+
+            for k, crit in enumerate(criteria):
+
+                if j < len(user_answers[i]) and letters == crit[0] and user_answers[i][j] == crit[1]:
+                    print(user_answers[i], answers, 'other crit found')
+                    #other_crit_breakdown.append(crit[2])
+
+                    other_crit_breakdown = update_dict(crit[2], other_crit_breakdown)
+
+                elif j < len(user_answers[i]) and letters == crit[1] and user_answers[i][j] == crit[0]:
+                    print(user_answers[i], answers, 'other crit found')
+                    #other_crit_breakdown.append(crit[2].strip())
+                    
+                    other_crit_breakdown = update_dict(crit[2], other_crit_breakdown)
+
+    print(other_crit_breakdown)
+    return other_crit_breakdown
+
+    
+
+        
 
 
 @login_required(login_url='/accounts/login/')
@@ -169,7 +211,9 @@ def index(request):
             child = request.session['child']
             teacher = request.session['teacher']
 
-            txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict)
+            other_crit = other_crit_check(test,server_answers,user_answers)
+
+            txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict, other_crit)
 
 
             return render(request, 'quiz/results.html', {

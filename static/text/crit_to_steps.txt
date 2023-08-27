@@ -1,0 +1,121 @@
+/er/ sound written ar, Step 26.1
+/er/ sound written or, Step 26.2
+ase ending, Step 26.3
+ce ending, Step 24.0
+cks ending, Step 7.0
+compound word, Step 17.0
+consonant b, Step 1
+consonant c, Step 1
+consonant d, Step 1
+consonant f, Step 1
+consonant g, Step 1
+consonant h, Step 1
+consonant j, Step 1
+consonant k, Step 1
+consonant l, Step 1
+consonant m, Step 1
+consonant n, Step 1
+consonant p, Step 1
+consonant r, Step 1
+consonant s, Step 1
+consonant t, Step 1
+consonant v, Step 1
+consonant w, Step 1
+consonant x, Step 1
+consonant y, Step 1
+dge ending, Step 13.1
+double middle consonant, Step 22.0
+double vowel ai, Step 25.1
+double vowel au, Step 24.0
+double vowel aw, Step 24.1
+double vowel ay, Step 25.2
+double vowel ea, Step 28.1
+double vowel ei, Step 50.2
+double vowel io, Step 24.0
+double vowel oi, Step 16.0
+double vowel oo, Step 18.0 & 18.1
+double vowel ou, Step 12.0
+double vowel ow, Step 12.1
+double vowel oy, Step 16.1
+drop e for ing, Step 11.6
+drop the e for y, Step 11.5
+ff/ll/ss/zz ending, Step 4
+final blend ch after r, Step 8.3
+final blend ck, Step 2.5
+final blend ft, Step 2.1
+final blend lp, Step 2.3
+final blend lt , Step 2.2
+final blend mp, Step 2.3
+final blend nch, Step 8.2
+final blend nd, Step 2.4
+final blend ng, Step 2.4
+final blend nk, Step 2.6
+final blend nt , Step 2.2
+final blend rk, Step 2.6
+final blend sh, Step 2.0
+final blend sk, Step 2.6
+final blend st, Step 2.1
+final blend tch, Step 8.1
+final blend th, Step 21.0
+initial blend br, Step 3.2
+initial blend ch, Step 3.6
+initial blend cr, Step 3.2
+initial blend dr, Step 3.2
+initial blend fl, Step 3.0
+initial blend gr, Step 3.3
+initial blend pl, Step 3.1
+initial blend pr, Step 3.3
+initial blend sc, Step 3.4
+initial blend sh, Step 3.6
+initial blend sl, Step 3.1
+initial blend sn, Step 3.4
+initial blend sp, Step 3.5
+initial blend st, Step 3.5
+initial blend th, Step 3.6
+initial blend thr, Step 3.7
+initial blend tr, Step 3.3
+initial blend tw, Step 3.3
+le ending, Step 23.0 & 23.1
+le ending cle, Step 23.2
+le ending dle, Step 23.1
+le ending fle, Step 23.1
+long vowel with single consonant, Step 23.1
+magic e with a, Step 11.1
+magic e with i, Step 11.2
+magic e with u, Step 11.4
+prefix re, Step 19.0
+qu/squ error, Step 8.4
+r-controlled vowel ar, Step 5.0
+r-controlled vowel ir, Step 5.2
+r-controlled vowel or, Step 5.1
+r-controlled vowel ur, Step 5.2
+short vowel a, Step 1.0
+short vowel e, Step 1.0
+short vowel i, Step 1.0
+short vowel o, Step 1.0
+short vowel u, Step 1.0
+sight word "any", Sight words B
+sight word "be", Sight words A
+sight word "where", Sight words B
+sight word every, Sight words D
+silent gh, Step 50.2
+soft sound of c, Step 34.0
+suffix ed, Step 10.0 & 10.1
+suffix es, Steps 14.0  -  14.2
+suffix ing, Step 22.0
+triple initial blend scr, Step 3.7 & 3.8
+triple initial blend shr, Step 3.7 & 3.8
+triple initial blend spl, Step 3.7 & 3.8
+triple initial blend spr, Step 3.7 & 3.8
+triple initial blend str, Step 3.7 & 3.8
+ular ending, Step 26.1
+vowel sound of y, Step 19.0
+w making "a" say /o/, Step 9.0
+w making "or" say /er/, Step 9.1
+welded ending ild, Step 20.1
+welded ending ind, Step 20.1
+welded ending old, Step 20.0
+welded ending ost, Step 20.0
+welded sound al/all, Step 20.0
+y changes to ied, Step 19.1
+y changes to ies, Step 19.1

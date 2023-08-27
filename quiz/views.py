@@ -21,9 +21,10 @@ class testForm(forms.Form):
     options = [(obj.id, obj) for i,obj in enumerate(Test.objects.all())]
     test = forms.ChoiceField(choices=options)
 
-def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
+def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict):
     breakdown_str = '\n'.join(breakdown.values())
-    critcount_str = [f'Error:, No. of instances:']+[f'{k},{v}' for k,v in crit_counter.items()]
+    # k is criteria
+    critcount_str = [f'Error: No. of instances:']+[f'{step_dict[k]} {k},{v}' for k,v in crit_counter.items()]
     critcount_str = '\n'.join(critcount_str)
     
     student = Student(name=child, breakdown=breakdown_str, crit_counter=critcount_str,correct=correct,incorrect=incorrect)
@@ -41,6 +42,14 @@ def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect):
 def prep_qna(test):
 
     server_answers = []
+    #step_dict = 'lol'
+
+    with open(test.steps) as f:
+        
+        s = [s.strip().split(',') for s in f.readlines()]
+        #print(s)
+        step_dict = {k.strip() : v.strip() for k,v in s}
+        print(step_dict)
     
     with open(test.questions) as f:
         questions = [s.strip() for s in f.readlines()]
@@ -56,7 +65,7 @@ def prep_qna(test):
         questions[i] = f'Q{i+1}: {re.sub(p, "(?)", s)}'
 
     total = len(questions)
-    return questions, server_answers, total
+    return questions, server_answers, total, step_dict
 
 
 def correctify(user_answers, server_answers):
@@ -139,7 +148,7 @@ def index(request):
             
             test = Test.objects.get(name=request.session['test'])
 
-            questions, server_answers, total = prep_qna(test)
+            questions, server_answers, total, step_dict = prep_qna(test)
             
             user_answers = request.POST.getlist('answer')
             
@@ -160,7 +169,7 @@ def index(request):
             child = request.session['child']
             teacher = request.session['teacher']
 
-            txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect)
+            txt = make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_dict)
 
 
             return render(request, 'quiz/results.html', {
@@ -170,7 +179,7 @@ def index(request):
                 })
         else:
             test = Test.objects.get(name=request.session['test'])           
-            questions, server_answers, total = prep_qna(test)
+            questions, server_answers, total, step_dict = prep_qna(test)
 
             return render(request, 'quiz/index.html', {
                 'form': answerForm(),

@@ -39,12 +39,14 @@ class Test(models.Model):
     f2 = 'static/text/unique_criteria_list.txt'
     f3 = 'static/text/regex_expressions.txt'
     f4 = 'static/text/testsheet.txt'
+    f5 = 'static/text/crit_to_step.txt'
     
     name = models.CharField(max_length=100,default="unnamed_test")
     questions = models.TextField(default=write_text(str(f4)))
     crit_list = models.TextField(default=write_text(str(f1)))
     unique_crits = models.TextField(default=write_text(str(f2)))
     regs = models.TextField(default=write_text(str(f3)))
+    steps = models.TextField(default='nothing')
 
     def __str__(self):
         return self.name

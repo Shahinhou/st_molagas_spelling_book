@@ -100,6 +100,10 @@ def classify_errors(errors, test):
                     crit_counter[crit] = []
                 # this used to be a counter i have changed it to a list and we will get len() for vals
                 crit_counter[crit].append(expected)
+
+    for k in crit_counter.keys():
+        crit_counter[k] = '/'.join(crit_counter[k])
+
     
     return error_dict, crit_counter
 

@@ -27,7 +27,8 @@ def make_txt(child, teacher, crit_counter, breakdown, correct, incorrect, step_d
     critcount_str = [f'Error: No. of instances:']+[f'{step_dict[k]},{k},{len(v)},{v}' for k,v in crit_counter.items()]
     other_str = [f'Global Criteria: No. of instances:']+[f'{k},{v}' for k,v in other_crit.items()]
 
-    critcount_str = '\n'.join(critcount_str) + '\n' + '\n'.join(other_str)
+    critcount_str = '\n'.join(critcount_str)+'|'+'\n'.join(other_str)
+    print(f'critcount: {critcount_str}')
     
     student = Student(name=child, breakdown=breakdown_str, crit_counter=critcount_str,correct=correct,incorrect=incorrect)
     student.save()
@@ -51,7 +52,6 @@ def prep_qna(test):
         s = [s.strip().split(',') for s in f.readlines()]
         #print(s)
         step_dict = {k.strip() : v.strip() for k,v in s}
-        print(step_dict)
     
     with open(test.questions) as f:
         questions = [s.strip() for s in f.readlines()]
@@ -62,7 +62,6 @@ def prep_qna(test):
     p = r'\[[\S]*\]'
     for i,s in enumerate(questions):
         actual = re.findall(p,s)[0]
-        print('\n',actual,'\n')
         server_answers.append(actual[1:len(actual)-1].strip())
         questions[i] = f'Q{i+1}: {re.sub(p, "(?)", s)}'
 
@@ -110,29 +109,20 @@ def other_crit_check(test, server_answers, user_answers):
             for k, crit in enumerate(criteria):
 
                 if j < len(user_answers[i]) and letters == crit[0] and user_answers[i][j] == crit[1]:
-                    print(user_answers[i], answers, 'other crit found')
                     #other_crit_breakdown.append(crit[2])
 
                     other_crit_breakdown = update_dict(crit[2], other_crit_breakdown)
 
                 elif j < len(user_answers[i]) and letters == crit[1] and user_answers[i][j] == crit[0]:
-                    print(user_answers[i], answers, 'other crit found')
                     #other_crit_breakdown.append(crit[2].strip())
                     
                     other_crit_breakdown = update_dict(crit[2], other_crit_breakdown)
 
-    print(other_crit_breakdown)
     return other_crit_breakdown
-
-    
-
-        
-
 
 @login_required(login_url='/accounts/login/')
 def index(request):
 
-    print(request.user.username)
 
     if request.user.username == 'teacher':
         return redirect("grades:index") # redirect to your page
@@ -150,7 +140,6 @@ def index(request):
 
         form = loginForm(request.POST)
         test_form = testForm(request.POST)
-        print(test_form)
 
         if form.is_valid() and test_form.is_valid():
             
@@ -169,7 +158,6 @@ def index(request):
             request.session['child'] = child
             request.session['teacher'] = teacher
             request.session['test'] = Test.objects.get(pk=test).name
-            print('\nLOOK HERE',test)
             
         elif 'child' in request.session and 'teacher' in request.session:
             pass
@@ -183,7 +171,6 @@ def index(request):
 
         
         # if the request to the server is in the form of a user RETURNING data
-        print('\n','posting','\n')
         form = answerForm(request.POST)
          
         if form.is_valid():
@@ -206,7 +193,6 @@ def index(request):
 
                 breakdown[k] = f"Child's Answer: {answer_dict[k][0]}, Expected: {answer_dict[k][1]},\n Missing Criteria: {', '.join(v)}"
             
-            print(breakdown)
 
             child = request.session['child']
             teacher = request.session['teacher']

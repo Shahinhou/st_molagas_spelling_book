@@ -104,7 +104,37 @@ input[type=text] {
 table, th, td {
     border: 1px solid;
     padding: 15px;
-    font-family: 'Merriweather';
+    font-family: 'Roboto';
+    font-weight: bold;
     font-size: 20px;
-    width: 100%;
+    width: 50%;
+    margin: auto;
+    #text-shadow: 2px 2px 2px gray;
+    color: white;
+}
+
+#r0 {
+    background-color: #c70704;
+}
+#r1 {
+    background-color: #b100c4;
+}
+#r2 {
+    background-color: #ffdd00;
+}
+
+#r3 {
+    background-color: black;
+}
+.step {
+    background-color: #c70704;
+}
+.error {
+    background-color: #b100c4;
+}
+.count {
+    background-color: #ffdd00;
+}
+.specific {
+    background-color: black;
 }

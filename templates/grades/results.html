@@ -15,18 +15,47 @@
 <div class="breakdown">
     <table>
         <tr>
-            <th> Errors </th>
-            <th> Count </th>
+            <th class="step"> Step </th>
+            <th class="error"> Error </th>
+            <th class="count"> Count </th>
+            <th class="specific"> Specific Examples </th>
         </tr>
 {% for s in analysis %}
 <tr>
 {% for t in s %}
 
-<td> {{ t }} </td>
+{% if forloop.counter0 < 3 %}
+
+<td id="r{{ forloop.counter0 }}"> {{ t }} </td>
+
+{% else %}
+
+<td id="r3"> {{ t }} </td>
+
+{% endif %}
 
 {% endfor %}
 </tr>
 {% endfor %}
     </table>
+
+<h2> GLOBAL CRITERIA: </h2>
+<table>
+    <tr><th class="error"> Error </th>
+        <th class="count"> Count </th>
+
+    </tr>
+    {% for s in global_crit %}
+    <tr>
+        {% for t in s %}
+
+        <td id="r{{ forloop.counter }}"> {{ t }} </td>
+
+        {% endfor %}
+
+    </tr>
+    {% endfor %}
+</table>
+    
 </div>
 {% endblock %}

@@ -1,0 +1,26 @@
+    10	n/a
+    19	n/a // what is an example of magic e with a
+    40	n/a // explanation?
+    42	n/a // explanation?
+    44	n/a
+    45	n/a
+    50	n/a
+    57	n/a
+    64	n/a
+    66	n/a
+    67	n/a // what?
+    73	n/a
+    79	n/a
+    80	n/a
+    82	n/a
+    86	n/a
+    87	n/a
+    93	n/a
+    98	n/a
+   101	n/a
+   105	n/a
+   106	n/a
+   112	n/a
+   113	n/a
+   114	n/a
+   120	n/a
